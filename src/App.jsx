@@ -5,6 +5,7 @@ import TextAnalyzer from "./components/textanalyzer";
 
 function App() {
   const [showAnalyzer, setShowAnalyzer] = useState(false);
+  const [showStudents, setShowStudents] = useState(true);
 
   const students = [
     {
@@ -55,6 +56,7 @@ function App() {
           Profile
         </h1>
 
+        {/* Text Analyzer Button */}
         <button
           className="analyse-btn"
           onClick={() => setShowAnalyzer(!showAnalyzer)}
@@ -64,17 +66,30 @@ function App() {
 
         {showAnalyzer && <TextAnalyzer />}
 
-        <div className="student-list">
-          {students.map((student, index) => (
-            <StudentCard
-              key={index}
-              name={student.name}
-              course={student.course}
-              email={student.email}
-              semester={student.semester}
-            />
-          ))}
-        </div>
+        {/* Student Information Show/Hide Button */}
+        <button
+          className="analyse-btn"
+          onClick={() => setShowStudents(!showStudents)}
+        >
+          {showStudents
+            ? "Hide Student Information"
+            : "Show Student Information"}
+        </button>
+
+        {/* Student Information */}
+        {showStudents && (
+          <div className="student-list">
+            {students.map((student, index) => (
+              <StudentCard
+                key={index}
+                name={student.name}
+                course={student.course}
+                email={student.email}
+                semester={student.semester}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
     </div>
